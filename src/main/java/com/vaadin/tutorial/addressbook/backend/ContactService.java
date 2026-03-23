@@ -16,6 +16,8 @@ import java.util.logging.Logger;
 public class ContactService {
 
     // Create dummy data by randomly combining first and last names
+
+    //TODO реализовать потокобезопасные коллекции
     static String[] fnames = { "Peter", "Alice", "John", "Mike", "Olivia",
             "Nina", "Alex", "Rita", "Dan", "Umberto", "Henrik", "Rene", "Lisa",
             "Linda", "Timothy", "Daniel", "Brian", "George", "Scott",
@@ -60,6 +62,7 @@ public class ContactService {
         ArrayList arrayList = new ArrayList();
         for (Contact contact : contacts.values()) {
             try {
+                //TODO вынести в отдельный метод
                 boolean passesFilter = (stringFilter == null || stringFilter.isEmpty())
                         || contact.toString().toLowerCase()
                                 .contains(stringFilter.toLowerCase());
@@ -67,6 +70,7 @@ public class ContactService {
                     arrayList.add(contact.clone());
                 }
             } catch (CloneNotSupportedException ex) {
+                //TODO вынести логгер в поле класса
                 Logger.getLogger(ContactService.class.getName()).log(
                         Level.SEVERE, null, ex);
             }
