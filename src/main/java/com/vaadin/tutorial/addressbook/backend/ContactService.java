@@ -56,6 +56,7 @@ public class ContactService {
     private long nextId = 0;
 
     public synchronized List<Contact> findAll(String stringFilter) {
+        //TODO добавить дженерики
         ArrayList arrayList = new ArrayList();
         for (Contact contact : contacts.values()) {
             try {
@@ -70,6 +71,7 @@ public class ContactService {
                         Level.SEVERE, null, ex);
             }
         }
+        //TODO добавить лямбду
         Collections.sort(arrayList, new Comparator<Contact>() {
 
             @Override
